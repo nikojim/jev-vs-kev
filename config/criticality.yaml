@@ -1,0 +1,21 @@
+# NOUL — ticket criticality / urgency, sent to the models as a `noul` decision.
+# The model returns P(true) = probability that the ticket is critical.
+#   critical             = P(true) >= decision_threshold
+#   criticality confidence = max(P, 1 - P)   (used by the human-review rule)
+version: 2
+noul:
+  label: Critical
+  instructions: Is this ticket critical — does it require an immediate, on-call response?
+  criteria:
+    "true": >-
+      Production is down or badly degraded for many users, an active or suspected security incident,
+      data loss or corruption in progress, or an enterprise customer completely blocked in a core
+      workflow with no workaround. Needs a response within 15 minutes and on-call paging.
+    "false": >-
+      Partial loss of functionality with a workaround, a single user affected, billing or account
+      questions without immediate business impact, how-to requests, cosmetic issues, compliance
+      paperwork or feature requests. Can follow the normal queue (2 hours to 3 business days).
+  outcomes:
+    "true": { name: Critical, response_sla: 15 minutes, action: Page on-call and open an incident }
+    "false": { name: Not critical, response_sla: Normal queue, action: Route to the assigned team queue }
+  decision_threshold: 0.5

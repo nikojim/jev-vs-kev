@@ -1,0 +1,27 @@
+# Severity — impact estimate, sent to the models as a `score` decision.
+# Levels are ordered from least to most severe. The model returns a probability-weighted
+# position on this scale (0 = first level ... n-1 = last level) plus a confidence.
+version: 2
+instructions: How severe is the business impact of this ticket?
+scoring_factors:
+  - Number of users affected
+  - Whether core workflows are blocked
+  - Availability of a workaround
+  - Data integrity or security impact
+  - Customer tier (enterprise > pro > free)
+levels:
+  - id: low
+    name: Low
+    definition: Cosmetic issue or question. No functional impact; workaround is trivial or not needed.
+
+  - id: medium
+    name: Medium
+    definition: A feature is partially impaired for one user or a small group. A reasonable workaround exists.
+
+  - id: high
+    name: High
+    definition: Core functionality is broken for a customer or a significant group of users. Workaround is costly or absent. Possible revenue or data impact.
+
+  - id: critical
+    name: Critical
+    definition: Widespread outage, security breach, data loss or legal/compliance exposure. Business cannot operate.

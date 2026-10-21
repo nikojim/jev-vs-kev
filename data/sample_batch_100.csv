@@ -1,0 +1,101 @@
+id,subject,body,customer_tier,channel,expected_team,expected_critical,expected_severity
+T-001,Charged twice for October,Our card was charged $499 twice on Oct 1 for the Pro plan (INV-20931 and INV-20932). Please refund the duplicate.,pro,email,billing,false,medium
+T-002,Need VAT number on invoice,Can you reissue invoice INV-19877 with our VAT number DE123456789? Our accountant needs it before month end.,pro,email,billing,false,low
+T-003,Card declined when upgrading,Trying to upgrade from Free to Pro and the card keeps being declined. The bank says there is no block on their side.,free,chat,billing,false,low
+T-004,Cancel at end of term,Please cancel our subscription at the end of the current term and confirm there will be no further charges.,pro,email,billing,false,low
+T-005,"Invoice shows 250 seats, we have 80","This month's invoice bills us for 250 seats but our admin panel shows 80 active users. That is a $8,500 difference and finance has frozen the payment until it is corrected.",enterprise,email,billing,false,high
+T-006,Refund for unused annual plan,We bought the annual plan by mistake two days ago instead of monthly. Can we get a refund and switch to monthly?,pro,web_form,billing,false,low
+T-007,"Payment failed, account suspended","Our auto-payment failed because the card expired and the whole workspace was suspended this morning. 60 people cannot work. We updated the card, please reactivate immediately.",enterprise,phone,billing,true,critical
+T-008,Currency change request,We are moving our billing entity to the UK. Can future invoices be issued in GBP instead of USD?,enterprise,email,billing,false,low
+T-009,Discount code not applied,I used the code STARTUP50 at checkout but the full price was charged.,free,chat,billing,false,low
+T-010,Sales tax charged to exempt nonprofit,"We are a registered 501(c)(3) and uploaded our exemption certificate last month, but we were charged sales tax again on the latest invoice.",pro,email,billing,false,medium
+T-011,Proration looks wrong after downgrade,We downgraded from Business to Pro mid-cycle and the credit on the next invoice is much smaller than expected. Can you explain the calculation?,pro,web_form,billing,false,medium
+T-012,Need W-9 for vendor onboarding,Our procurement team needs your W-9 form to add you as a vendor.,enterprise,email,billing,false,low
+T-013,Charged after cancellation,I cancelled in August (confirmation #C-5512) and I was still charged in September and October. I want both charges refunded.,pro,email,billing,false,medium
+T-014,Purchase order on invoice,Please add PO number 4500098812 to all future invoices; our AP system rejects invoices without it.,enterprise,email,billing,false,low
+T-015,Billing portal shows error,When I open Billing > Invoices I get 'Something went wrong'. I just need to download last month's invoice.,pro,chat,billing,false,low
+T-016,Pricing question for 500 seats,We are evaluating an expansion to 500 seats. Is there volume pricing above 250 users?,enterprise,web_form,billing,false,low
+T-017,Locked out after phone change,"New phone, authenticator codes fail, I'm the only admin and the recovery codes were on the wiped phone.",pro,chat,account_access,false,high
+T-018,SSO redirect loop for everyone,"After rotating our Okta certificate, SAML login loops back to the login page for all 120 employees. Password login is disabled by policy so nobody can get in.",enterprise,phone,account_access,true,critical
+T-019,Password reset email never arrives,I requested a password reset three times and no email arrives. Spam folder is empty.,free,web_form,account_access,false,medium
+T-020,Give Analyst role billing read access,How can I let the Analyst role view billing reports without making them admins?,pro,web_form,account_access,false,low
+T-021,Transfer workspace ownership,Our founder who owns the workspace is leaving the company. How do we transfer ownership to our COO?,enterprise,email,account_access,false,medium
+T-022,SCIM not provisioning new hires,New employees added in Azure AD since Monday are not being created in your app. Existing users are fine. We have 15 people starting today.,enterprise,email,account_access,false,high
+T-023,Can't enable MFA,"When I scan the QR code to enable MFA, the app says the code is invalid every time.",free,chat,account_access,false,low
+T-024,User shows as deactivated,"One of our sales reps shows as 'deactivated' and can't log in, but nobody on our side deactivated him.",pro,email,account_access,false,medium
+T-025,Session expires every 5 minutes,Since yesterday I get logged out every 5 minutes and have to log in again. Very disruptive but I can still work.,pro,chat,account_access,false,medium
+T-026,Change login email,I changed jobs inside the company and need my login email changed from j.smith@old-domain.com to j.smith@new-domain.com.,pro,web_form,account_access,false,low
+T-027,Whole team logged out and SSO down,Your SAML endpoint returns HTTP 500 for every login attempt from our tenant. All 400 users are locked out right before our quarter close.,enterprise,phone,account_access,true,critical
+T-028,Guest users can see internal projects,"Guest accounts we invited for a client can browse all internal projects, not only the one they were invited to. Is this a permissions setting?",enterprise,email,account_access,false,high
+T-029,Merge two accounts,I accidentally created two accounts with different emails. Can you merge them so I keep my history?,free,web_form,account_access,false,low
+T-030,Admin can't remove a user,Clicking 'Remove user' does nothing for one specific member of our team. Other users can be removed.,pro,chat,account_access,false,low
+T-031,Domain verification failing,"We added the TXT record for domain verification 48 hours ago but the status still says pending, so we can't enforce SSO.",enterprise,email,account_access,false,medium
+T-032,API token creation disabled,The 'Create token' button is greyed out for our workspace admins. We need a token to set up our integration this week.,pro,web_form,account_access,false,medium
+T-033,Dashboard returns 502 for everyone,Since 09:10 UTC every page returns 502 Bad Gateway for all 340 users in our org. Support floor is blocked. Status page still shows green.,enterprise,phone,platform_reliability,true,critical
+T-034,API latency above 10 seconds,p95 latency on all API endpoints jumped from 300 ms to 12 s since 06:00 UTC. Our checkout depends on it and customers are abandoning carts.,enterprise,email,platform_reliability,true,critical
+T-035,Records vanished after import,We imported 12k contacts and only about 6k are visible now; some contacts that were not in the CSV were deleted too. Sales uses this data daily.,enterprise,phone,platform_reliability,true,critical
+T-036,Scheduled reports not sent,"None of our scheduled reports were delivered this morning, and nothing shows in the error log. Second time this week.",pro,chat,platform_reliability,false,medium
+T-037,App sluggish for a few days,The app has been slow for a few days; some reports take a minute to load. We upgraded to Premium for performance. If this continues we want a partial refund.,enterprise,email,platform_reliability,false,medium
+T-038,EU region completely down,Nothing loads for any of our EU users since 14:20 CET; US colleagues are fine. Our entire European operation is stopped.,enterprise,phone,platform_reliability,true,critical
+T-039,Search results out of date,Search doesn't find records created in the last 3 hours. Older records are found fine.,pro,web_form,platform_reliability,false,medium
+T-040,File uploads fail intermittently,About 1 in 5 file uploads fails with 'Network error'. Retrying usually works.,pro,chat,platform_reliability,false,medium
+T-041,Exports stuck in 'processing',Every CSV export since yesterday stays at 'processing' forever. We need the data for a board meeting on Friday.,enterprise,email,platform_reliability,false,high
+T-042,Data corruption in custom fields,"Since this morning's release, values in our 'Contract value' custom field are being overwritten with zeros when anyone edits a record. This is spreading across thousands of records right now.",enterprise,phone,platform_reliability,true,critical
+T-043,Notifications delayed by hours,"Email notifications arrive 3-4 hours late. Real-time alerts are part of our workflow, but we can check the app manually for now.",pro,email,platform_reliability,false,medium
+T-044,Mobile app crashes on launch,The iOS app crashes immediately on launch after updating to 7.3. The web app works.,pro,chat,platform_reliability,false,medium
+T-045,Dashboard charts not loading,Charts on the analytics dashboard show a spinner forever. Tables load fine.,free,web_form,platform_reliability,false,low
+T-046,Background jobs not running at all,No automation rules have fired since 02:00 UTC. Hundreds of customer follow-ups and SLA escalations are not being created for any of our teams.,enterprise,phone,platform_reliability,true,high
+T-047,Occasional 504 on large reports,Reports covering more than 12 months sometimes time out with a 504. Shorter ranges work.,pro,email,platform_reliability,false,low
+T-048,Deleted project still visible,We deleted a project yesterday and it still appears for some users after refreshing.,pro,web_form,platform_reliability,false,low
+T-049,Backups restored wrong data,We requested a restore of yesterday's backup and the restored workspace contains data from three weeks ago. Two weeks of customer records appear to be lost.,enterprise,phone,platform_reliability,true,critical
+T-050,Page load slow in Australia,Our Sydney office sees 6-8 s page loads while the US office is fine. Annoying but usable.,enterprise,email,platform_reliability,false,medium
+T-051,Webhooks stopped after release,"order.created webhooks stopped arriving yesterday at 14:00, right after your signing update. Our fulfilment system is missing order events.",pro,email,integrations_api,false,high
+T-052,429 at low volume,We receive 429 from /v2/contacts at under 5 req/s; the documented limit is 50 req/s. Our nightly sync fails halfway.,enterprise,email,integrations_api,false,high
+T-053,Salesforce sync missing a field,Since Monday the Salesforce sync no longer maps the 'Region' custom field. Other fields sync fine.,pro,email,integrations_api,false,medium
+T-054,Zapier trigger fires three times,"Our Zapier 'New Deal' trigger fires 3 times per deal since yesterday, creating duplicate tasks for the team.",pro,web_form,integrations_api,false,medium
+T-055,Slack notifications stopped,The Slack integration stopped posting to #support yesterday. Reconnecting didn't help.,pro,chat,integrations_api,false,medium
+T-056,Python SDK throws SSL error,The Python SDK 4.2 throws 'certificate verify failed' on every call since this morning. curl to the same endpoint works.,pro,email,integrations_api,false,medium
+T-057,Pagination returns duplicates,GET /v2/tickets with cursor pagination returns some records twice and skips others when there are more than 10k results.,enterprise,email,integrations_api,false,medium
+T-058,How to filter by custom field via API,Is there a way to filter /v2/contacts by a custom field value? I can't find it in the docs.,free,web_form,integrations_api,false,low
+T-059,"Payment provider integration down, orders failing","Your Stripe connector returns 'invalid credentials' for every transaction since 10:00, so no customer orders are being processed in our store. We are losing revenue every minute.",enterprise,phone,integrations_api,true,critical
+T-060,API key rotation question,What is the recommended way to rotate API keys without downtime?,pro,email,integrations_api,false,low
+T-061,HubSpot import maps wrong owner,Deals imported from HubSpot are all assigned to the admin user instead of the original owners.,pro,web_form,integrations_api,false,medium
+T-062,Webhook signature validation fails,"After your update, our webhook signature check fails for all events. Docs still show the old algorithm.",pro,email,integrations_api,false,high
+T-063,GraphQL endpoint timeout,Nested GraphQL queries over 3 levels deep time out after 30 s.,pro,email,integrations_api,false,low
+T-064,Jira integration duplicate issues,Each ticket escalated to Jira creates two Jira issues.,pro,chat,integrations_api,false,low
+T-065,Need higher rate limit,We plan to sync 2 million records next month. Can our API rate limit be raised temporarily?,enterprise,email,integrations_api,false,low
+T-066,Public API returning 500 for all customers,"Every call to /v2/* returns HTTP 500 since 08:45 UTC. Our product embeds your API, so all of our 2,000 customers are affected.",enterprise,phone,integrations_api,true,critical
+T-067,Outlook add-in not loading,The Outlook add-in shows a blank panel for some users on Outlook for Mac.,pro,web_form,integrations_api,false,low
+T-068,Unknown admin exported data,An admin account we never created was added at 03:14 and exported two customer lists. We have not authorised this.,enterprise,chat,security,true,critical
+T-069,GDPR erasure request,"Under Article 17 GDPR please delete all personal data about me, including backups. Email jane.doe@example.org.",free,email,security,false,medium
+T-070,Request SOC 2 report,Procurement needs your latest SOC 2 Type II report and a signed DPA before our renewal next week.,enterprise,email,security,false,low
+T-071,Phishing emails using your brand,"Several employees received emails pretending to be your billing team, asking them to update card details on a lookalike domain.",enterprise,email,security,false,high
+T-072,Former employee still has access,An employee who left 2 weeks ago can still log in; we removed them in our IdP but SCIM didn't deprovision them.,enterprise,phone,security,true,high
+T-073,Vulnerability report: XSS,I'm a security researcher. The project description field is vulnerable to stored XSS; payload and PoC attached. Please advise on your disclosure process.,free,email,security,false,high
+T-074,API key leaked on GitHub,We just realised one of our production API keys was committed to a public GitHub repo 6 hours ago. Please help us revoke it and check for misuse.,enterprise,phone,security,true,critical
+T-075,Pen test notification,We plan to run our annual penetration test against our tenant next month. Who do we notify?,enterprise,email,security,false,low
+T-076,Suspicious logins from abroad,"Our audit log shows successful logins to three user accounts from IP addresses in a country where we have no staff, within the last hour.",enterprise,chat,security,true,critical
+T-077,Data residency question,Is our data stored in the EU? We need to confirm this for our DPIA.,enterprise,email,security,false,low
+T-078,Customer data visible to another tenant,When we open the contacts page we briefly see contact names from a company that is not ours. Screenshot attached. This looks like a data leak.,enterprise,phone,security,true,critical
+T-079,Request audit logs for investigation,HR is investigating an internal incident. Can you provide audit logs for user m.jones for the last 90 days?,enterprise,email,security,false,medium
+T-080,Is SAML signing SHA-1?,Our security team asks whether your SAML assertions are signed with SHA-1 or SHA-256.,pro,web_form,security,false,low
+T-081,CCPA data access request,As a California resident I request a copy of all personal information you hold about me.,free,email,security,false,medium
+T-082,"Ransomware on our side, need to lock accounts",We are dealing with a ransomware incident on our network. We need to immediately suspend all sessions and API tokens for our workspace until we contain it.,enterprise,phone,security,true,critical
+T-083,Password policy settings,Can we enforce a minimum password length of 14 characters for our workspace?,pro,web_form,security,false,low
+T-084,How to export to PDF,Is there a way to export the monthly usage report as PDF? I only see CSV.,free,web_form,product_support,false,low
+T-085,Safari button overlap,In Safari 18 the Save button text overlaps its icon on the settings page. It still works.,pro,web_form,product_support,false,low
+T-086,Feature request: dark mode,Would love a dark mode for the web app. Our team works late shifts.,free,web_form,product_support,false,low
+T-087,not working,it doesnt work anymore pls fix,free,chat,product_support,false,medium
+T-088,How to set up recurring tasks,How do I create a task that repeats every first Monday of the month?,pro,chat,product_support,false,low
+T-089,Kanban view missing,The Kanban view option disappeared from my project. Did it move?,pro,chat,product_support,false,low
+T-090,Bulk edit request,Is it possible to change the status of 300 tasks at once?,pro,email,product_support,false,low
+T-091,Training session for new team,We are onboarding 40 new users next week. Do you offer a live training session?,enterprise,email,product_support,false,low
+T-092,Date format wrong,Dates show as MM/DD/YYYY but our team is in Germany. Where can we change this?,pro,web_form,product_support,false,low
+T-093,Template gallery suggestion,It would be great to have templates for HR onboarding in the gallery.,free,web_form,product_support,false,low
+T-094,Can't find archived projects,Where do archived projects go? I need to look at one from last year.,pro,chat,product_support,false,low
+T-095,Formula field returns wrong total,"A formula field summing line items shows 1,980 instead of 2,000 for some records. We use it for quotes, so we double-check manually for now.",pro,email,product_support,false,medium
+T-096,Keyboard shortcut list,Is there a list of keyboard shortcuts?,free,chat,product_support,false,low
+T-097,Dashboard widget request,Can we add a widget that shows tickets per agent per day?,enterprise,email,product_support,false,low
+T-098,Typo in German translation,The German UI says 'Speichen' instead of 'Speichern' on the save button.,pro,web_form,product_support,false,low
+T-099,Help configuring approval workflow,We want purchases over $5k to require two approvals. Can someone walk us through setting this up?,enterprise,email,product_support,false,low
+T-100,Everything broken since update??,After the update the screen looks different and I can't find anything. Is the app broken?,free,chat,product_support,false,low

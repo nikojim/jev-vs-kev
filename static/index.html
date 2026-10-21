@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JEV vs KEV Triage</title>
+<link rel="stylesheet" href="/static/styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <div class="brand">
+      <h1>Ticket Triage Benchmark</h1>
+      <span class="model-chip"><i style="background:var(--jev)"></i><span id="jev-label">JEV</span> <small>baseline</small></span>
+      <span class="vs">vs</span>
+      <span class="model-chip"><i style="background:var(--kev)"></i><span id="kev-label">KEV</span> <small>challenger</small></span>
+      <span class="spacer"></span>
+      <span class="muted small" id="threshold-chip"></span>
+      <button class="icon-btn" id="theme-btn" title="Toggle theme" aria-label="Toggle theme">◐</button>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-tab="single" aria-selected="true">Single ticket</button>
+      <button role="tab" data-tab="batch" aria-selected="false">Batch</button>
+      <button role="tab" data-tab="dashboard" aria-selected="false">Decision dashboard</button>
+      <button role="tab" data-tab="config" aria-selected="false">Definitions</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="banner" id="key-banner" hidden>
+    <strong>OPENROUTER_API_KEY is not set.</strong> Copy <code>.env.example</code> to <code>.env</code>, add your key and restart the server. You can still browse samples and inspect prompts.
+  </div>
+
+  <!-- ===================== SINGLE ===================== -->
+  <section class="panel" id="panel-single">
+    <div class="single">
+      <form class="card stack" id="ticket-form" autocomplete="off">
+        <h2>New ticket</h2>
+        <div>
+          <label class="field" for="sample-select">Load a sample ticket</label>
+          <select id="sample-select"><option value="">— Write your own —</option></select>
+        </div>
+        <div>
+          <label class="field" for="t-subject">Subject</label>
+          <input type="text" id="t-subject" required placeholder="e.g. Dashboard returns 502 for all users">
+        </div>
+        <div>
+          <label class="field" for="t-body">Description</label>
+          <textarea id="t-body" required placeholder="Describe the problem as the customer would…"></textarea>
+        </div>
+        <div class="row">
+          <div class="grow">
+            <label class="field" for="t-tier">Customer tier</label>
+            <select id="t-tier">
+              <option value="">Unknown</option><option value="free">Free</option>
+              <option value="pro">Pro</option><option value="enterprise">Enterprise</option>
+            </select>
+          </div>
+          <div class="grow">
+            <label class="field" for="t-channel">Channel</label>
+            <select id="t-channel">
+              <option value="">Unknown</option><option value="email">Email</option><option value="chat">Chat</option>
+              <option value="phone">Phone</option><option value="web_form">Web form</option>
+            </select>
+          </div>
+          <div style="width:90px">
+            <label class="field" for="t-runs" title="Run each model N times to measure consistency">Runs</label>
+            <input type="number" id="t-runs" min="1" max="10" value="1">
+          </div>
+        </div>
+        <div>
+          <label class="field" for="t-hitl">Human review when confidence is low on</label>
+          <select id="t-hitl" class="hitl-mode"></select>
+        </div>
+        <div class="row">
+          <button type="button" class="btn" id="view-prompt-btn">View request</button>
+          <span class="grow"></span>
+          <button type="submit" class="btn primary" id="run-btn">Run triage</button>
+        </div>
+      </form>
+
+      <div id="single-result">
+        <div class="empty">Pick a sample or write a ticket, then <strong>Run triage</strong>.<br>Both models receive the exact same Decisions API request.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BATCH ===================== -->
+  <section class="panel stack" id="panel-batch" hidden>
+    <div class="card">
+      <h2>Run a batch</h2>
+      <div class="batch-controls">
+        <div>
+          <label class="field" for="csv-file">CSV file</label>
+          <input type="file" id="csv-file" accept=".csv,text/csv">
+          <div class="small muted" style="margin-top:4px">Columns: <code>subject, body</code> (required) · <code>id, customer_tier, channel, expected_team, expected_critical, expected_severity</code> (optional)</div>
+        </div>
+        <div>
+          <label class="field" for="batch-name">Run name (optional)</label>
+          <input type="text" id="batch-name" placeholder="e.g. Baseline October">
+        </div>
+        <div style="max-width:120px">
+          <label class="field" for="batch-runs">Runs per ticket</label>
+          <input type="number" id="batch-runs" min="1" max="10" value="1">
+        </div>
+        <div>
+          <label class="field" for="batch-hitl">Human review when confidence is low on</label>
+          <select id="batch-hitl" class="hitl-mode"></select>
+        </div>
+        <div>
+          <label class="field" for="sample-csv">Sample CSV</label>
+          <div class="row" style="flex-wrap:nowrap">
+            <select id="sample-csv"></select>
+            <a class="btn sm" id="sample-csv-dl" href="/api/samples/batch.csv" title="Download this sample">⭳</a>
+          </div>
+        </div>
+        <div class="row">
+          <button class="btn primary" id="batch-upload-btn">Run uploaded CSV</button>
+          <button class="btn" id="batch-sample-btn">Run sample CSV</button>
+        </div>
+      </div>
+      <div id="batch-progress" hidden style="margin-top:16px">
+        <div class="row small" style="margin-bottom:6px"><span class="spinner"></span><span id="batch-progress-text">Starting…</span></div>
+        <div class="progress"><div id="batch-progress-bar"></div></div>
+      </div>
+    </div>
+
+    <div class="card" id="batch-results" hidden>
+      <div class="row" style="margin-bottom:12px">
+        <h2 style="margin:0" id="batch-title">Results</h2>
+        <span class="grow"></span>
+        <div class="filters" id="batch-filters">
+          <button class="btn sm" data-filter="all" aria-pressed="true">All</button>
+          <button class="btn sm" data-filter="diverges" aria-pressed="false">Diverges / partial</button>
+          <button class="btn sm" data-filter="hitl" aria-pressed="false">Needs human</button>
+          <button class="btn sm" data-filter="error" aria-pressed="false">Errors</button>
+        </div>
+      </div>
+      <div id="batch-totals"></div>
+      <div class="row" style="margin-bottom:12px" id="batch-exports"></div>
+      <div class="table-wrap"><table class="results" id="batch-table"></table></div>
+      <p class="small muted">Click a row to open the ticket in the Single ticket view. ⚠ = routed to human review.</p>
+    </div>
+  </section>
+
+  <!-- ===================== DASHBOARD ===================== -->
+  <section class="panel stack" id="panel-dashboard" hidden>
+    <div class="card row">
+      <label class="field" for="run-select" style="margin:0">Run</label>
+      <select id="run-select" class="grow" style="max-width:520px"></select>
+      <button class="btn sm" id="run-refresh">Refresh</button>
+      <span class="grow"></span>
+      <div class="row" id="dash-exports"></div>
+    </div>
+    <div id="dashboard">
+      <div class="empty">Run a batch (or pick a past run) to see aggregate comparisons.</div>
+    </div>
+  </section>
+
+  <!-- ===================== CONFIG ===================== -->
+  <section class="panel stack" id="panel-config" hidden>
+    <div class="row">
+      <p class="muted small grow" style="margin:0">Definitions are loaded from <code>config/*.yaml</code> on every request — edit the files and refresh. Fingerprint: <code id="cfg-fp"></code></p>
+      <a class="btn sm primary" href="/api/definitions.pdf" download>⭳ Export definitions (PDF)</a>
+    </div>
+    <div class="cfg-grid" id="config-defs"></div>
+    <div class="cfg-grid" id="config-yaml"></div>
+  </section>
+</main>
+
+<dialog id="prompt-dialog">
+  <div class="dhead">
+    <strong>Request sent to both models</strong>
+    <div class="seg" role="group" aria-label="Request part">
+      <button data-part="questions" aria-pressed="true">Questions</button>
+      <button data-part="state" aria-pressed="false">State (ticket)</button>
+      <button data-part="request" aria-pressed="false">Full request</button>
+    </div>
+    <span class="grow"></span>
+    <button class="btn sm" id="copy-prompt">Copy</button>
+    <button class="btn sm" id="close-prompt">Close</button>
+  </div>
+  <div class="dbody"><pre id="prompt-text"></pre></div>
+</dialog>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

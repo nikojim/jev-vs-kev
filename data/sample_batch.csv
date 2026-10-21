@@ -1,0 +1,26 @@
+id,subject,body,customer_tier,channel,expected_team,expected_critical,expected_severity
+T-001,Dashboard returns 502 for everyone,Since 09:10 UTC every page returns 502 Bad Gateway for all 340 users in our org. Support floor is blocked.,enterprise,phone,platform_reliability,true,critical
+T-002,Charged twice this month,"Two charges of $499 on Oct 1 for our Pro plan. Please refund the duplicate (INV-20931, INV-20932).",pro,email,billing,false,medium
+T-003,Unknown admin user exported data,An admin account we never created was added at 03:14 and exported two customer lists. Not authorised.,enterprise,chat,security,true,critical
+T-004,How to export to PDF,Is there a way to export the monthly usage report as PDF? I only see CSV.,free,web_form,product_support,false,low
+T-005,Webhooks stopped after release,order.created webhooks stopped arriving yesterday 14:00 after your signing update. Missing order events in fulfilment.,pro,email,integrations_api,false,high
+T-006,Locked out after phone change,"New phone, authenticator codes fail, I'm the only admin and recovery codes were on the wiped phone.",pro,chat,account_access,false,medium
+T-007,Need VAT invoice,Could you reissue invoice INV-19877 with our VAT number DE123456789? Accounting needs it this month.,pro,email,billing,false,low
+T-008,SSO redirect loop,"After rotating our Okta certificate, SAML login loops back to the login page for all 120 employees. Password login is disabled by policy.",enterprise,phone,account_access,true,critical
+T-009,GDPR erasure request,Under Article 17 GDPR please delete all personal data about me including backups. Email jane.doe@example.org.,free,email,security,false,medium
+T-010,Safari button overlap,In Safari 18 the Save button text overlaps its icon on the settings page. Still works.,pro,web_form,product_support,false,low
+T-011,429 at low volume,"Receiving 429 from /v2/contacts at <5 req/s, documented limit is 50 req/s. Nightly sync fails halfway.",enterprise,email,integrations_api,false,high
+T-012,Records vanished after import,"Imported 12k contacts, only ~6k visible now and some contacts not in the CSV were deleted too. Sales uses this daily.",enterprise,phone,platform_reliability,true,critical
+T-013,Feature request dark mode,Would love a dark mode for the web app. Our team works late shifts.,free,web_form,product_support,false,low
+T-014,API latency 10s+,p95 latency on all API endpoints jumped from 300ms to 12s since 06:00 UTC. Our checkout depends on it.,enterprise,email,platform_reliability,true,critical
+T-015,Card declined on upgrade,Trying to upgrade from Free to Pro but the card keeps getting declined. Bank says no block on their side.,free,chat,billing,false,low
+T-016,Request SOC 2 report,Our procurement needs your latest SOC 2 Type II report and a signed DPA before renewal next week.,enterprise,email,security,false,low
+T-017,Add users to role,How can I give the 'Analyst' role read access to billing reports without making them admins?,pro,web_form,account_access,false,low
+T-018,Salesforce sync missing fields,Since Monday the Salesforce sync no longer maps the 'Region' custom field. Other fields sync fine.,pro,email,integrations_api,false,medium
+T-019,Phishing email using your brand,Several of our employees received emails pretending to be from your billing team asking to update card details on a lookalike domain.,enterprise,email,security,false,high
+T-020,Scheduled reports not sent,None of our scheduled reports were delivered this morning. Nothing in the error log. This is the second time this week.,pro,chat,platform_reliability,false,medium
+T-021,Slow and want refund,"App has been sluggish for days, reports take a minute. We upgraded to Premium for performance. If this continues we want a partial refund.",enterprise,email,platform_reliability,false,medium
+T-022,not working,it doesnt work anymore pls fix,free,chat,product_support,false,low
+T-023,Cancel subscription,Please cancel our subscription at end of the current term and confirm no further charges.,pro,email,billing,false,low
+T-024,Zapier trigger duplicates,"Our Zapier 'New Deal' trigger fires 3 times per deal since yesterday, creating duplicate tasks for our team.",pro,web_form,integrations_api,false,medium
+T-025,Former employee still has access,An employee who left 2 weeks ago can still log in — we removed them in our IdP but SCIM didn't deprovision.,enterprise,phone,account_access,false,high

@@ -1,0 +1,98 @@
+[
+  {
+    "id": "S-001",
+    "title": "Full outage — 502 everywhere",
+    "subject": "Entire dashboard returning 502 Bad Gateway",
+    "body": "Since 09:10 UTC every page of the dashboard returns 502 Bad Gateway for all 340 users in our org. Our support floor is completely blocked. Status page still shows green. Please escalate immediately.",
+    "customer_tier": "enterprise",
+    "channel": "phone"
+  },
+  {
+    "id": "S-002",
+    "title": "Double charge",
+    "subject": "Charged twice for October",
+    "body": "Hi, my credit card statement shows two charges of $499 on Oct 1 for our Pro subscription. Can you refund the duplicate? Invoice numbers INV-20931 and INV-20932.",
+    "customer_tier": "pro",
+    "channel": "email"
+  },
+  {
+    "id": "S-003",
+    "title": "Suspicious admin user",
+    "subject": "Unknown admin account in our workspace",
+    "body": "We just noticed an admin account 'support-helpdesk2@protonmail.com' that nobody on our team created. It was added yesterday at 03:14 and has exported two customer lists. We have not authorised this.",
+    "customer_tier": "enterprise",
+    "channel": "chat"
+  },
+  {
+    "id": "S-004",
+    "title": "How-to: export PDF",
+    "subject": "Export report to PDF?",
+    "body": "Is there a way to export the monthly usage report as a PDF? I can only find CSV.",
+    "customer_tier": "free",
+    "channel": "web_form"
+  },
+  {
+    "id": "S-005",
+    "title": "Webhooks silent",
+    "subject": "Webhooks stopped firing after your release",
+    "body": "Our order.created webhooks stopped arriving at about 14:00 yesterday, right after your changelog mentioned a webhook signing update. Endpoint is healthy and receives test pings from other providers. We are missing order events in our fulfilment system.",
+    "customer_tier": "pro",
+    "channel": "email"
+  },
+  {
+    "id": "S-006",
+    "title": "MFA lockout",
+    "subject": "Locked out after changing phone",
+    "body": "I got a new phone and my authenticator app codes no longer work. I'm the only admin on the account and can't log in. Recovery codes are on the old phone which was wiped.",
+    "customer_tier": "pro",
+    "channel": "chat"
+  },
+  {
+    "id": "S-007",
+    "title": "Ambiguous: slow + billing",
+    "subject": "Everything is slow and we're paying for premium",
+    "body": "The app has been sluggish for a few days, some reports take a minute to load. We upgraded to the Premium tier specifically for performance. If this keeps up we want a partial refund.",
+    "customer_tier": "enterprise",
+    "channel": "email"
+  },
+  {
+    "id": "S-008",
+    "title": "GDPR erasure",
+    "subject": "Right to erasure request",
+    "body": "Under Article 17 GDPR I request deletion of all personal data you hold about me, including backups. My account email is jane.doe@example.org. Please confirm within the statutory deadline.",
+    "customer_tier": "free",
+    "channel": "email"
+  },
+  {
+    "id": "S-009",
+    "title": "Cosmetic UI bug",
+    "subject": "Button text overlaps in Safari",
+    "body": "In Safari 18 the 'Save changes' button text overlaps the icon in the settings page. Still clickable, just looks off.",
+    "customer_tier": "pro",
+    "channel": "web_form"
+  },
+  {
+    "id": "S-010",
+    "title": "API rate limit 429",
+    "subject": "Getting 429s at low volume",
+    "body": "We're receiving HTTP 429 Too Many Requests from /v2/contacts even though we send fewer than 5 req/s, well under our documented 50 req/s limit. Our nightly sync fails halfway through.",
+    "customer_tier": "enterprise",
+    "channel": "email"
+  },
+  {
+    "id": "S-011",
+    "title": "Vague one-liner",
+    "subject": "not working",
+    "body": "it doesnt work anymore pls fix",
+    "customer_tier": "free",
+    "channel": "chat"
+  },
+  {
+    "id": "S-012",
+    "title": "Data missing after import",
+    "subject": "Half of our records disappeared after CSV import",
+    "body": "We imported 12,000 contacts via CSV this morning. The import reported success but now we only see ~6,000 contacts, and some existing contacts that were NOT in the CSV are gone too. We need to know if this is recoverable — our sales team uses this data daily.",
+    "customer_tier": "enterprise",
+    "channel": "phone"
+  }
+]

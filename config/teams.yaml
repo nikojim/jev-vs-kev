@@ -1,0 +1,55 @@
+# Team assignment — sent to the models as a `choice` decision.
+# id:          option key the model returns (snake_case, stable)
+# name:        display name
+# description: what the team owns; becomes the option's criterion text
+# examples:    typical issues, appended to the criterion to help disambiguate
+version: 2
+instructions: Which support team should own this ticket?
+teams:
+  - id: billing
+    name: Billing & Payments
+    description: Invoices, charges, refunds, subscription plans, payment methods, taxes and pricing questions.
+    examples:
+      - Charged twice for the same month
+      - Need a VAT invoice
+      - Card declined when upgrading plan
+
+  - id: account_access
+    name: Account & Access
+    description: Login problems, password resets, SSO/SAML, MFA, user provisioning, roles and permissions.
+    examples:
+      - Cannot log in after enabling MFA
+      - SSO redirects to an error page
+      - Need to transfer workspace ownership
+
+  - id: platform_reliability
+    name: Platform Reliability (SRE)
+    description: Outages, downtime, elevated error rates, latency, degraded performance, data loss, infrastructure incidents.
+    examples:
+      - Dashboard returns 502 for all users
+      - API latency above 10s since this morning
+      - Scheduled jobs are not running
+
+  - id: integrations_api
+    name: Integrations & API
+    description: Public API usage, webhooks, SDKs, rate limits, third-party integrations (Slack, Salesforce, Zapier, etc.).
+    examples:
+      - Webhooks stopped firing
+      - Getting 429 from the REST API
+      - Salesforce sync is missing fields
+
+  - id: security
+    name: Security & Compliance
+    description: Suspected breaches, vulnerabilities, phishing, suspicious activity, compliance requests (SOC 2, GDPR, DPA), data deletion requests.
+    examples:
+      - Unknown admin user appeared in our workspace
+      - Request for our SOC 2 Type II report
+      - GDPR right-to-erasure request
+
+  - id: product_support
+    name: Product Support
+    description: How-to questions, feature usage, configuration help, UI bugs that do not block work, feature requests.
+    examples:
+      - How do I export a report to PDF?
+      - Button misaligned in Safari
+      - Feature request for dark mode
